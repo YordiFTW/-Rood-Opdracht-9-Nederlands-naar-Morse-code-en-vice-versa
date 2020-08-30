@@ -1,0 +1,170 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MorseConverter1
+{
+    public partial class Form1 : Form
+    {
+
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //var text1 = textBox1.Text;
+            //var text2 = textBox2.Text;
+            //string text3 = textBox1.Text;
+            //string text4 = textBox1.Text;
+
+            var morse = string.Empty;
+
+        }
+
+        private void ToMorse()
+        {
+            var dictionary = new Dictionary<string, string>();
+            dictionary.Add(" ", "/");
+            dictionary.Add("A", ".-");
+            dictionary.Add("B", "-...");
+            dictionary.Add("C", "-.-.");
+            dictionary.Add("D", "-..");
+            dictionary.Add("E", ".");
+            dictionary.Add("F", "..-.");
+            dictionary.Add("G", "--.");
+            dictionary.Add("H", "....");
+            dictionary.Add("I", "..");
+            dictionary.Add("J", ".---");
+            dictionary.Add("K", "-.-");
+            dictionary.Add("L", ".-..");
+            dictionary.Add("M", "--");
+            dictionary.Add("N", "-.");
+            dictionary.Add("O", "---");
+            dictionary.Add("P", ".--.");
+            dictionary.Add("Q", "--.-");
+            dictionary.Add("R", ".-.");
+            dictionary.Add("S", "...");
+            dictionary.Add("T", "-");
+            dictionary.Add("U", "..-");
+            dictionary.Add("V", "...-");
+            dictionary.Add("W", ".--");
+            dictionary.Add("X", "-..-");
+            dictionary.Add("Y", "-.--");
+            dictionary.Add("Z", "--..");
+
+            dictionary.Add("1", ".----");
+            dictionary.Add("2", "..---");
+            dictionary.Add("3", "...--");
+            dictionary.Add("4", "....-");
+            dictionary.Add("5", ".....");
+            dictionary.Add("6", "-....");
+            dictionary.Add("7", "--...");
+            dictionary.Add("8", "---..");
+            dictionary.Add("9", "----.");
+            dictionary.Add("0", "-----");
+
+            var text1 = textBox1.Text;
+
+
+
+            var morse1 = string.Empty;
+
+            foreach (var c in text1)
+            {
+                try
+                {
+                    morse1 += dictionary[c.ToString().ToUpper()] + " ";
+                }
+                catch { }
+            }
+
+
+            textBox2.Text = ($"{morse1}" + "/");
+
+        }
+
+        private void ToAlpha()
+        {
+            var dictionary2 = new Dictionary<string, string>();
+            dictionary2.Add("/", " ");
+            dictionary2.Add(".-", "A");
+            dictionary2.Add("-...", "B");
+            dictionary2.Add("-.-.", "C");
+            dictionary2.Add("-..", "D");
+            dictionary2.Add(".", "E");
+            dictionary2.Add("..-.", "F");
+            dictionary2.Add("--.", "G");
+            dictionary2.Add("....", "H");
+            dictionary2.Add("..", "I");
+            dictionary2.Add(".---", "J");
+            dictionary2.Add("-.-", "K");
+            dictionary2.Add(".-..", "L");
+            dictionary2.Add("--", "M");
+            dictionary2.Add("-.", "N");
+            dictionary2.Add("---", "O");
+            dictionary2.Add(".--.", "P");
+            dictionary2.Add("--.-", "Q");
+            dictionary2.Add(".-.", "R");
+            dictionary2.Add("...", "S");
+            dictionary2.Add("-", "T");
+            dictionary2.Add("..-", "U");
+            dictionary2.Add("...-", "V");
+            dictionary2.Add(".--", "W");
+            dictionary2.Add("-..-", "X");
+            dictionary2.Add("-.--", "Y");
+            dictionary2.Add("--..", "Z");
+
+            dictionary2.Add(".----", "1");
+            dictionary2.Add("..---", "2");
+            dictionary2.Add("...--", "3");
+            dictionary2.Add("....-", "4");
+            dictionary2.Add(".....", "5");
+            dictionary2.Add("-....", "6");
+            dictionary2.Add("--...", "7");
+            dictionary2.Add("---..", "8");
+            dictionary2.Add("----.", "9");
+            dictionary2.Add("-----", "0");
+
+            var morse2 = textBox3.Text;
+
+            
+
+            var text2 = string.Empty;
+
+            foreach (string word in morse2.Split(' '))
+            {
+              
+                try
+                {
+                    text2 += dictionary2[(word).ToString().ToLower()];
+
+                    
+                }
+                catch { }
+            }
+            textBox4.Text = text2.ToLower();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ToMorse();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ToAlpha();
+        }
+    }
+}
